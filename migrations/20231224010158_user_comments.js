@@ -13,8 +13,8 @@ exports.up = function (knex) {
       table.increments("id").primary();
       table.string("comment", 1000).notNullable();
       table.integer("likes").notNullable().defaultTo(0);
-      table.decimal("lat", 10, 6).notNullable(); // Adjust precision and scale as needed
-      table.decimal("lng", 10, 6).notNullable();
+      table.decimal('lat', 10, 7).notNullable();
+      table.decimal('lng', 10, 7).notNullable();
       table
         .integer("user_id")
         .unsigned()
