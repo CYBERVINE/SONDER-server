@@ -9,6 +9,17 @@ const getPosts = async (req,res) => {
   }
 }
 
+const getUserPosts = async (req,res) => {
+  console.log(req.params.id)
+  try {
+    const posts = await knex("posts")
+      .where("user_id", req.params.id)
+    res.send(posts)
+  } catch (err) {
+    res.send(err)
+  }
+}
+
 const makePost = async (req,res) => {
   try{
   const post = await knex("posts")
@@ -21,5 +32,6 @@ const makePost = async (req,res) => {
 
 module.exports = {
   getPosts,
+  getUserPosts,
   makePost
 }

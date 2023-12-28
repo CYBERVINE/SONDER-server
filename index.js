@@ -12,7 +12,7 @@ app.use(cors());
 
 app.use(postsRouter)
 app.use(usersRouter)
-app.use(promosRouter)
+app.use(promosRouter) // add promo links
 
 
 
