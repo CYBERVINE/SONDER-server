@@ -7,4 +7,5 @@ router
 router
   .route("/users/:id")  
   .get(usersController.getUser)
+  
 module.exports = router

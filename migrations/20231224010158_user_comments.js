@@ -6,6 +6,7 @@ exports.up = function (knex) {
       table.string("email").notNullable();
       table.string("password").notNullable();
       table.string("city").notNullable();
+      table.binary("avatar")
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table
         .timestamp("updated_at")
@@ -13,7 +14,8 @@ exports.up = function (knex) {
     })
     .createTable("promos", (table) => {
       table.increments("id").primary();
-      table.string("promo", 1000).notNullable();
+      table.string("promo", 1000);
+      table.string("link", 1000);
       table
       .integer("user_id")
       .unsigned()

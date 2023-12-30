@@ -5,5 +5,8 @@ router
   .route("/posts")
   .get(postsController.getPosts)
   .post(postsController.makePost)
+router
+  .route("/posts/:id")
+  .get(postsController.getUserPosts)
 
 module.exports = router

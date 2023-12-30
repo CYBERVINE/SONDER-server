@@ -4,6 +4,7 @@ const cors = require('cors')
 const postsRouter = require('./routes/posts-route')
 const usersRouter = require('./routes/users-route')
 const promosRouter = require('./routes/promos-route')
+const loginRouter = require('./routes/login-route')
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -12,11 +13,12 @@ app.use(cors());
 
 app.use(postsRouter)
 app.use(usersRouter)
-app.use(promosRouter)
+app.use(loginRouter)
+app.use(promosRouter) // add promo links
 
 
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.send('Hello, Express!');
 });
 

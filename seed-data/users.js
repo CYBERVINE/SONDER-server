@@ -1,5 +1,5 @@
 module.exports = [
-  { id: 1, username: "John Doe", email: "john.doe@example.com", city: "Vancouver", password: "johnDoePassword" },
+  { id: 1, username: "Anonymous", email: "anonymous@example.com", city: "Vancouver", password: "anonymous" },
   { id: 2, username: "Jane Smith", email: "jane.smith@example.com", city: "Vancouver", password: "janeSmithPassword" },
   { id: 3, username: "Bob Johnson", email: "bob.johnson@example.com", city: "Vancouver", password: "bobJohnsonPassword" },
   { id: 4, username: "Alice Williams", email: "alice.williams@example.com", city: "Vancouver", password: "aliceWilliamsPassword" },
