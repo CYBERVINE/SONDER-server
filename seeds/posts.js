@@ -1,6 +1,6 @@
 const usersData = require('../seed-data/users');
 const postsData = require('../seed-data/posts');
-const promosData = require('../seed-data/promos');
+const promosData = require('../seed-data/promos')
 
 
 exports.seed = async function(knex) {

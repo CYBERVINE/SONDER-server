@@ -6,11 +6,11 @@ const getUser = async (req,res) => {
       .where("id", req.params.id)
       .first()
     res.send(user)
-    console.log(user)
   } catch (err) {
     res.send(err)
   }
 }
+
 
 const makeUser = async (req,res) => {
   try{
