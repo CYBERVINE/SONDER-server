@@ -22,7 +22,19 @@ const makeUser = async (req,res) => {
   }
 }
 
+const editUser = async (req,res) => {
+  try{
+    const user = await knex("users")
+    .where("id", req.params.id)
+    .update("username", req.body.username)
+    res.sendStatus(200)
+  } catch (err) {
+    res.send(err)
+  }
+}
+
 module.exports = {
   getUser,
-  makeUser
+  makeUser,
+  editUser
 }
