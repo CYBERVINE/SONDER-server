@@ -7,5 +7,8 @@ router
 router
   .route("/users/:id")  
   .get(usersController.getUser)
-  
+router
+  .route("/users/:id/edit")  
+  .get(usersController.getUser)
+  .post(usersController.editUser)  
 module.exports = router
