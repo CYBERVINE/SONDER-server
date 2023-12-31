@@ -1,5 +1,7 @@
 const knex = require("knex")(require("../knexfile"))
 
+
+
 const getUser = async (req,res) => {
   try{
     const user = await knex("users")

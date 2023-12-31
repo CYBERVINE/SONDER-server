@@ -40,6 +40,34 @@ function getToken(req){
   }
 }
 
+
+
+
+
+const multer = require("multer")
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cd){
+    return cd(null, './public/images')
+  },
+  filename: function (req,file,cb){
+    return cb(null, `${Date.now()}_${file.originalname}`)
+  }
+})
+
+const upload = multer({storage: storage})
+
+app.post('/upload', upload.single("file"), (req,res) => {
+  console.log(req.body)
+  console.log(req.file)
+})
+
+
+
+
+
+
+
 app.use(postsRouter)
 app.use(usersRouter)
 app.use(loginRouter)
