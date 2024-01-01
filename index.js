@@ -6,6 +6,7 @@ const postsRouter = require('./routes/posts-route')
 const usersRouter = require('./routes/users-route')
 const promosRouter = require('./routes/promos-route')
 const loginRouter = require('./routes/login-route')
+const multer = require("multer")
 const app = express();
 const port = process.env.PORT || 8080;
 const jsonSecretKey = process.env.JWT_KEY
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
     next()
   } else {
     const token = getToken(req)
+    console.log("go")
 
     if(token) {
       console.log('Auth Token:', token)
@@ -39,6 +41,28 @@ function getToken(req){
     return req.headers.authorization.split(" ")[1]
   }
 }
+
+
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cd){
+    return cd(null, './public/images')
+  },
+  filename: function (req,file,cb){
+    return cb(null, `${Date.now()}_${file.originalname}`)
+  }
+})
+const upload = multer({storage: storage})
+app.post('/upload', upload.single("file"), (req,res) => {
+  console.log(req.body)
+  console.log(req.file)
+})
+
+
+
+app.use('/avatars', express.static("public/images"))
+
+
 
 app.use(postsRouter)
 app.use(usersRouter)
