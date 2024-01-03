@@ -25,15 +25,18 @@ const makeUser = async (req,res) => {
 }
 
 const editUser = async (req,res) => {
-    const avatar = req.file ? req.file.filename : "default"
+
   try{
-    const user = await knex("users")
-    .where("id", req.params.id)
-    .update("username", req.body.username)
-    .update("avatar",`http://localhost:8080/avatars/${avatar}`)
-
     if (req.file) {
-
+      const avatar = req.file.filename
+      const user = await knex("users")
+      .where("id", req.params.id)
+      .update("username", req.body.username)
+      .update("avatar",`http://localhost:8080/avatars/${avatar}`)
+    } else {
+      const user = await knex("users")
+      .where("id", req.params.id)
+      .update("username", req.body.username)
     }
 
     res.sendStatus(200)

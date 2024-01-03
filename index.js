@@ -6,7 +6,6 @@ const postsRouter = require('./routes/posts-route')
 const usersRouter = require('./routes/users-route')
 const promosRouter = require('./routes/promos-route')
 const loginRouter = require('./routes/login-route')
-const multer = require("multer")
 const app = express();
 const port = process.env.PORT || 8080;
 const jsonSecretKey = process.env.JWT_KEY
@@ -42,25 +41,8 @@ function getToken(req){
   }
 }
 
-
-
-const storage = multer.diskStorage({
-  destination: function(req, file, cd){
-    return cd(null, './public/images')
-  },
-  filename: function (req,file,cb){
-    return cb(null, `${Date.now()}_${file.originalname}`)
-  }
-})
-const upload = multer({storage: storage})
-app.post('/upload', upload.single("file"), (req,res) => {
-  console.log(req.body)
-  console.log(req.file)
-})
-
-
-
-app.use('/avatars', express.static("public/images"))
+app.use('/avatars', express.static("public/avatars"))
+app.use('/images', express.static("public/images"))
 
 
 

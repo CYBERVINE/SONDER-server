@@ -10,6 +10,18 @@ const getPromos = async (req,res) => {
   }
 }
 
+const deletePromo = async (req,res) => {
+  console.log(req.params.id)
+  try{
+    const promo = await knex("promos")
+      .where("id", req.params.id)
+      .del()
+    res.status(200)
+  } catch (err) {
+    res.send(err)
+  }
+}
+
 const makePromo = async (req,res) => {
   try{
     const promo = await knex("promos")
@@ -20,7 +32,9 @@ const makePromo = async (req,res) => {
   }
 }
 
+
 module.exports = {
   getPromos,
-  makePromo
+  makePromo,
+  deletePromo
 }
