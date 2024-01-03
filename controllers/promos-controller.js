@@ -16,7 +16,7 @@ const deletePromo = async (req,res) => {
     const promo = await knex("promos")
       .where("id", req.params.id)
       .del()
-    res.status(200)
+    res.sendStatus(200)
   } catch (err) {
     res.send(err)
   }
