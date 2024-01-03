@@ -7,6 +7,7 @@ exports.up = function (knex) {
       table.string("password").notNullable();
       table.string("city").notNullable();
       table.string("avatar").notNullable().defaultTo("");
+      table.string("description").notNullable().defaultTo("");
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table
         .timestamp("updated_at")

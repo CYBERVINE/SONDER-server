@@ -32,11 +32,13 @@ const editUser = async (req,res) => {
       const user = await knex("users")
       .where("id", req.params.id)
       .update("username", req.body.username)
+      .update("description", req.body.description)
       .update("avatar",`http://localhost:8080/avatars/${avatar}`)
     } else {
       const user = await knex("users")
       .where("id", req.params.id)
       .update("username", req.body.username)
+      .update("description", req.body.description)
     }
 
     res.sendStatus(200)
