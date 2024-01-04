@@ -1,13 +1,13 @@
 module.exports = [
-  { id: 1, username: "Anonymous", email: "anonymous@example.com", city: "Vancouver", password: "anonymous", avatar: "http://localhost:8080/avatars/anonymous.png" },
-  { id: 2, username: "Jane Smith", email: "jane.smith@example.com", city: "Vancouver", password: "janeSmithPassword", avatar: "http://localhost:8080/avatars/jane.jpg" },
-  { id: 3, username: "Bob Johnson", email: "bob.johnson@example.com", city: "Vancouver", password: "bobJohnsonPassword", avatar: "http://localhost:8080/avatars/bob.jpg" },
-  { id: 4, username: "Alice Williams", email: "alice.williams@example.com", city: "Vancouver", password: "aliceWilliamsPassword", avatar: "http://localhost:8080/avatars/alice.jpg" },
-  { id: 5, username: "Charlie Brown", email: "charlie.brown@example.com", city: "Vancouver", password: "charlieBrownPassword", avatar: "http://localhost:8080/avatars/charlie.jpg" },
-  { id: 6, username: "Eva Davis", email: "eva.davis@example.com", city: "Vancouver", password: "evaDavisPassword", avatar: "http://localhost:8080/avatars/eva.jpg" },
-  { id: 7, username: "Frank Miller", email: "frank.miller@example.com", city: "Vancouver", password: "frankMillerPassword", avatar: "http://localhost:8080/avatars/franck.jpg" },
-  { id: 8, username: "Grace Taylor", email: "grace.taylor@example.com", city: "Vancouver", password: "graceTaylorPassword", avatar: "http://localhost:8080/avatars/grace.jpg" },
-  { id: 9, username: "Henry Wilson", email: "henry.wilson@example.com", city: "Vancouver", password: "henryWilsonPassword" , avatar: "http://localhost:8080/avatars/henry.jpg"},
-  { id: 10, username: "Ivy Anderson", email: "ivy.anderson@example.com", city: "Vancouver", password: "ivyAndersonPassword" , avatar: "http://localhost:8080/avatars/ivy.jpg"},
-  { id: 11, username: "1111", email: "11111@example.com", city: "Vancouver", password: "11111" , avatar: "http://localhost:8080/avatars/10.png"},
-];
+  { id: 1, username: "Anonymous", email: "samuel.taylor@example.com", city: "Vancouver", password: "samuelPassword", avatar: "http://localhost:8080/avatars/anonymous.png", description: "Anonymous mind are some of the best." },
+  { id: 2, username: "Olivia Baker", email: "olivia.baker@example.com", city: "Vancouver", password: "oliviaPassword", avatar: "http://localhost:8080/avatars/olivia.jpg", description: "I find solace and inspiration in the rhythm of words, expressing my thoughts through poetry." },
+  { id: 3, username: "Nathan Hill", email: "nathan.hill@example.com", city: "Vancouver", password: "nathanPassword", avatar: "http://localhost:8080/avatars/nathan.jpg", description: "The streets are my stage, and I captivate audiences with my mesmerizing performances." },
+  { id: 4, username: "Emily Fisher", email: "emily.fisher@example.com", city: "Vancouver", password: "emilyPassword", avatar: "http://localhost:8080/avatars/emily.jpg", description: "I'm passionate about causes that matter, advocating for positive change in our community." },
+  { id: 5, username: "Daniel Clark", email: "daniel.clark@example.com", city: "Vancouver", password: "danielPassword", avatar: "http://localhost:8080/avatars/daniel.jpg", description: "Navigating the political landscape, I strive to make a difference and represent the people." },
+  { id: 6, username: "Sophia Murray", email: "sophia.murray@example.com", city: "Vancouver", password: "sophiaPassword", avatar: "http://localhost:8080/avatars/sophia.jpg", description: "Humor is my superpower, and I believe laughter can bring people closer together." },
+  { id: 7, username: "Caleb Mitchell", email: "caleb.mitchell@example.com", city: "Vancouver", password: "calebPassword", avatar: "http://localhost:8080/avatars/caleb.jpg", description: "Words have a melody of their own, and I compose poetry to share the beauty of language." },
+  { id: 8, username: "Isabella Porter", email: "isabella.porter@example.com", city: "Vancouver", password: "isabellaPassword", avatar: "http://localhost:8080/avatars/isabella.jpg", description: "The streets are my canvas, and I express my art to brighten people's days." },
+  { id: 9, username: "Owen Wright", email: "owen.wright@example.com", city: "Vancouver", password: "owenPassword", avatar: "http://localhost:8080/avatars/owen.jpg", description: "Passionate about causes that matter, I actively work towards creating a positive impact." },
+  { id: 10, username: "Ava Rich", email: "ava.richards@example.com", city: "Vancouver", password: "avaPassword", avatar: "http://localhost:8080/avatars/ava.jpg", description: "In the realm of politics, I aim to be a voice for the people, advocating for their needs." },
+  { id: 11, username: "1", email: "1@1.com", city: "Vancouver", password: "11111", avatar: "http://localhost:8080/avatars/anonymous.png", description: "I believe laughter is the best medicine, and I strive to bring joy to those around me with my comedic flair." }
+]
