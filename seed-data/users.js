@@ -9,5 +9,5 @@ module.exports = [
   { id: 8, username: "Isabella Porter", email: "isabella.porter@example.com", city: "Vancouver", password: "isabellaPassword", avatar: "http://localhost:8080/avatars/isabella.jpg", description: "The streets are my canvas, and I express my art to brighten people's days." },
   { id: 9, username: "Owen Wright", email: "owen.wright@example.com", city: "Vancouver", password: "owenPassword", avatar: "http://localhost:8080/avatars/owen.jpg", description: "Passionate about causes that matter, I actively work towards creating a positive impact." },
   { id: 10, username: "Ava Rich", email: "ava.richards@example.com", city: "Vancouver", password: "avaPassword", avatar: "http://localhost:8080/avatars/ava.jpg", description: "In the realm of politics, I aim to be a voice for the people, advocating for their needs." },
-  { id: 11, username: "1", email: "1@1.com", city: "Vancouver", password: "11111", avatar: "http://localhost:8080/avatars/anonymous.png", description: "I believe laughter is the best medicine, and I strive to bring joy to those around me with my comedic flair." }
+  { id: 11, username: "Test Profile", email: "1@1.com", city: "Vancouver", password: "11111", avatar: "http://localhost:8080/avatars/anonymous.png", description: "This is a user profile for test purposes." }
 ]
