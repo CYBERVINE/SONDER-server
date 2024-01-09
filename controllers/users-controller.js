@@ -15,12 +15,27 @@ const getUser = async (req,res) => {
 
 
 const makeUser = async (req,res) => {
+
+
   try{
-    const user = await knex("users")
-    .insert(req.body)
-    res.send(user)
-    res.send(err)
-  } catch (err) {
+    const users = await knex("users")
+    let emailTaken = false
+
+    users.forEach(user => {
+      if (user.email === req.body.email){
+        emailTaken = true
+      }
+    })
+    
+    if (!emailTaken){
+      const user = await knex("users")
+      .insert(req.body)
+      res.send(user)
+      res.send(err)
+    } else {
+      res.status(403).send("That email is already in use")
+    }
+    } catch (err) {
   }
 }
 
