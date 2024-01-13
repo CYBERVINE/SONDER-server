@@ -63,13 +63,3 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-// const fs = require("fs");
-// let csv = fs.readFileSync('./assets/worldcities.csv', "utf8", process.cwd)
-// csv = csv.split('\n').map(entry =>{
-//   entry = entry.split(',')
-//   return [entry[1], entry[2], entry[3]]
-// })
-// const string = JSON.stringify(csv)
-// fs.writeFileSync("./assets/cityLatLong.json", string)
-// const cityLatLongBuffer = fs.readFileSync('./assets/cityLatLong.json', "utf8")
-// const cityLatLong = JSON.parse(cityLatLongBuffer)
