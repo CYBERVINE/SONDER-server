@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema
+  return knex.schema.withSchema('sonder')
     .createTable("users", (table) => {
       table.increments("id").primary();
       table.string("username").notNullable();
@@ -68,5 +68,5 @@ exports.up = function (knex) {
 
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("posts").dropTable("promos").dropTable("users");
+  return knex.schema.dropTable("likes").dropTable("posts").dropTable("promos").dropTable("users");
 };
