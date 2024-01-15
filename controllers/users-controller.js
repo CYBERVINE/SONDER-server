@@ -48,7 +48,7 @@ const editUser = async (req,res) => {
       .where("id", req.params.id)
       .update("username", req.body.username)
       .update("description", req.body.description)
-      .update("avatar",`http://34.220.128.221:8080/avatars/${avatar}`)
+      .update("avatar",`https://sonder-764x.onrender.com/avatars/${avatar}`)
     } else {
       const user = await knex("users")
       .where("id", req.params.id)
