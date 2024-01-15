@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch index.js",
-    "migrate": "knex migrate:latest --connection postgres://cybervine:7z1qx62iHCKoDdS7QLtzEdqpPjhd8b4G@your-postgres-host:5432/sonder",
+    "migrate": "knex migrate:latest --connection postgres://cybervine:7z1qx62iHCKoDdS7QLtzEdqpPjhd8b4G@dpg-cmia10f109ks739k86ig-a:5432/sonder",
     "migrate:down": "knex migrate:down",
     "migrate:rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
