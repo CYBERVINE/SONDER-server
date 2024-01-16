@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.withSchema('sonder')
+  return knex.schema
     .createTable("users", (table) => {
       table.increments("id").primary();
       table.string("username").notNullable();

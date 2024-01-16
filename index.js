@@ -63,3 +63,7 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
+const mysql = require('mysql2')
+const connection = mysql.createConnection(process.env.DATABASE_URL)
+if(connection){console.log('Connected to PlanetScale!')}
+connection.end()
