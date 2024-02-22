@@ -20,14 +20,16 @@ const makeUser = async (user) => {
 }
 
 
-const editUser = async (user) => {
+const edit = async (id, body, file) => {
+  console.log(typeof id,body, file)
   await client.connect()
   const db = client.db(dbName)
   const users = db.collection('users')
-  const results = await users.updateOne({email:user.email},{
-    username: user.username,
-    description: "New to Sonder",
-    avatar: user?.avatar //might be a problem
+  const results = await users.updateOne({id:Number(id)},{ $set:
+    {
+      username: body.username,
+      description: body.description,
+    }
   });
   return results
 }
@@ -41,9 +43,14 @@ const allUsers = async () => {
 }
 
 const getUser = async (user) => {
+  console.log(user)
   await client.connect()
   const db = client.db(dbName)
   const users = db.collection('users')
+  if(user.email) {
+    const results = await users.find({email: user.email}).toArray();
+    return results[0]
+  }
   const results = await users.find({id: Number(user)}).toArray();
   return results[0]
 }
@@ -77,6 +84,35 @@ const makePost = async (post) => {
   })
   return results
 }
+
+const checkLikes = async (user) => {
+  await client.connect()
+  const db = client.db(dbName)
+  const likes = db.collection('likes')
+  const results = await likes.find({user_id: Number(user)}).toArray();
+  return results
+}
+
+const updateLikes = async (newLike) => {
+  console.lof(newLike)
+  await client.connect()
+  const db = client.db(dbName)
+  const likes = db.collection('likes')
+  const results = await likes.insertOne(newLike).toArray();
+  return results
+}
+
+
+const likePost = async (post, likes) => {
+  await client.connect()
+  const db = client.db(dbName)
+  const posts = db.collection('posts')
+  const results = await posts.updateOne({post_id:post},{$set:{
+    likes: likes + 1
+  }}).toArray();
+  return results[0]
+}
+
 
 // promos
 const userPromos = async (user) => {
@@ -112,11 +148,14 @@ module.exports = {
     allPosts,
     userPosts,
     makePost,
+    checkLikes,
+    likePost,
+    updateLikes,
     makePromo,
     userPromos,
     deletePromo,
     makeUser,
-    editUser,
+    edit,
     allUsers,
     getUser,
 }

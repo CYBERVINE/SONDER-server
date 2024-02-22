@@ -35,22 +35,8 @@ const makeUser = async (req,res) => {
 }
 
 const editUser = async (req,res) => {
-
+  const user = await sonder.edit(req.params.id, req.body, req.file)
   try{
-    if (req.file) {
-      const avatar = req.file.filename
-      const user = await sonder.editUser(req.params.id)
-      .where("id", req.params.id)
-      .update("username", req.body.username)
-      .update("description", req.body.description)
-      .update("avatar",`http://127.0.0.1:8080/avatars/${avatar}`)
-    } else {
-      const user = await knex("users")
-      .where("id", req.params.id)
-      .update("username", req.body.username)
-      .update("description", req.body.description)
-    }
-
     res.sendStatus(200)
   } catch (err) {
     res.send(err)

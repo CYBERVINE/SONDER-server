@@ -22,10 +22,16 @@ const promoSchema = new mongoose.Schema({
   promo: String,
   link: String
 })
+const likesSchema = new mongoose.Schema({
+  id: Number,
+  user_id: Number,
+  post_id: Number,
+})
 
 const Post = mongoose.model("Post", postSchema)
 const User = mongoose.model("User", userSchema)
 const Promo = mongoose.model("Promo", promoSchema)
+const Likes = mongoose.model("Likes", likesSchema)
 const seedPosts = require('./seed-data/posts')
 const seedPromos = require('./seed-data/promos')
 const seedUsers = require('./seed-data/users')
@@ -34,6 +40,7 @@ async function seedDB () {
   await Post.deleteMany({})
   await User.deleteMany({})
   await Promo.deleteMany({})
+  await Likes.deleteMany({})
   await Post.insertMany(seedPosts)
   await User.insertMany(seedUsers)
   await Promo.insertMany(seedPromos)
