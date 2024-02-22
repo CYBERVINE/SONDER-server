@@ -1,0 +1,110 @@
+file script.js ----------------------------------------------------------------------
+
+const Users = require('./User)
+
+mongoose.connect('mongodb://localhost/27017/sonder)
+
+
+run()
+async function run () {
+    ///// const user = new User({name: "kevin", age:36}) //same
+
+    const user = await User.findById("uiewrohqsfnjanfasf")
+    const user = await User.find({name:"name"})
+    const user = await User.exists({name:"name"})
+    const user = await User.deleteOne({name:"name"})
+
+    const user = await User.create({name: "kevin", age:36}) //same
+    User.name = "sally"
+
+
+
+
+    const user = await User.where("age").gt("12").where("name").equals("Kyle").limit(3).select("age")
+
+    user[0].bestfriend = "adfasdfafgasdf"
+    
+    const user = await User.where("age")
+        .gt("12")
+        .where("name")
+        .equals("Kyle")
+        .limit(1)
+        .populate(friend) // is a like a join ( feature of mongoose)
+
+
+    console.log(user.namedEmail) // where the virtual endpont comes into play // not saved to database, only exists in the code, keep duplication down
+
+    await user.save()
+}
+
+file User.js ----------------------------------------------------------
+
+const addressSchema = new mongoose.Schema({
+    wef:sefa,
+    AFDASD:Asdfa
+})
+
+const userSchema = new mongoose.Schema({
+    name: String,
+    age: {
+        type: Number,
+        validate: { //validation on;lywork on .create and .save    // so use findById and then save to run validate
+            validator: v => v % 2 === 0,
+            message: props => `${props.value} is not even number`
+        }
+        },
+    email: {
+        type: String,
+        required: true,
+        lowercase: true
+    }
+    friend: {
+        type: mongoose.schemaTypes.ObjectId,
+        ref: "User" //model
+    },
+    hobbies, [Strings],
+    address: addressSchema //will have its own id,
+    createdAt:{
+        type: Date,
+        immutable: true, 
+        default: ()=> Date.now(),
+    },
+    updatedAt:{
+        type: Date,
+        default: ()=> Date.now(),
+    }
+})
+
+
+userSchema.methods.sayHi = function () { // cannot use arrow function because this.instance is referenced
+    console.log(`Hi im ${this.name}`)
+}
+
+userSchema.statics.findByName = function (name) { // this creates acustom query method //used on the object
+    return this.where({name:new RegExp(name, "i")}) // regexp makes query case insensitive
+}
+userSchema.query.findByName = function (name) { // this creates acustom query method // used on a query on an object
+    return this.where({name:new RegExp(name, "i")}) // regexp makes query case insensitive
+}
+
+userSchema.virtual('nameEmail').get(function() {
+    return `${this.name} <${this.email}>`
+})
+
+######################### middleware ##########################
+
+// can be save, validate, update
+
+userSchema.pre('save'), function (next) {
+    this.updatedAt = Date.now()
+    // next()
+    throw new Error("fail save")
+}
+
+userSchema.post('save'), function (doc, next) {
+    doc.sayHi()
+    next()
+}
+
+
+module.exports = mongoose.model("User", userSchema)

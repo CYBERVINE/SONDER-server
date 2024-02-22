@@ -1,8 +1,8 @@
-const knex = require("knex")(require("../knexfile"))
+const sonder = require('../database')
 
 const getPosts = async (req,res) => {
   try {
-    const posts = await knex("posts")
+    const posts = await sonder.allPosts()
     res.send(posts)
   } catch (err) {
     res.send(err)
@@ -11,8 +11,7 @@ const getPosts = async (req,res) => {
 
 const getUserPosts = async (req,res) => {
   try {
-    const posts = await knex("posts")
-      .where("user_id", req.params.id)
+    const posts = await sonder.userPosts(req.params.id)
     res.send(posts)
   } catch (err) {
     res.send(err)

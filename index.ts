@@ -9,9 +9,10 @@ const loginRouter = require('./routes/login-route')
 const app = express();
 const port = process.env.PORT || 8080;
 const jsonSecretKey = process.env.JWT_KEY
+
+
 app.use(express.json());
 app.use(cors());
-
 
 app.use((req, res, next) => {
   if (req.url === "/users" || "/user/:id" || req.url === "/promos"|| req.url === "/login" || req.url === '/posts'){
@@ -43,6 +44,7 @@ function getToken(req){
 }
 
 
+app.use('/index', express.static('client/index.html'))
 app.use('/avatars', express.static("public/avatars"))
 app.use('/images', express.static("public/images"))
 
@@ -53,13 +55,11 @@ app.use(usersRouter)
 app.use(loginRouter)
 app.use(promosRouter)
 
+
 app.get('/', (_req, res) => {
-  res.send('Hello, Express!');
+  res.send('hello!');
 });
-
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
