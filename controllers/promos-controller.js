@@ -11,9 +11,8 @@ const getPromos = async (req,res) => {
 
 const deletePromo = async (req,res) => {
   try{
-    const promo = await knex("promos")
-      .where("id", req.params.id)
-      .del()
+    const promo = await sonder.deletePromo(req.params.id)
+    console.log(promo)
     res.sendStatus(200)
   } catch (err) {
     res.send(err)
@@ -22,8 +21,7 @@ const deletePromo = async (req,res) => {
 
 const makePromo = async (req,res) => {
   try{
-    const promo = await knex("promos")
-    .insert(req.body)
+    const promo = await sonder.makePromo(req.body)
     res.send(promo)
   } catch (err) {
     res.send(err)

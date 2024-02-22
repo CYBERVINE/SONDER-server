@@ -19,8 +19,6 @@ app.use((req, res, next) => {
     next()
   } else {
     const token = getToken(req)
-    console.log("go")
-
     if(token) {
       console.log('Auth Token:', token)
       if (jwt.verify(token, jsonSecretKey)) {

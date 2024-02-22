@@ -58,8 +58,7 @@ const likePost = async (req,res) => {
 const makePost = async (req,res) => {
 
   try{
-  const post = await knex("posts")
-    .insert(req.body)
+  const post = await sonder.makePost(req.body)
     res.send(post)
   } catch (err) {
     res.send(err)

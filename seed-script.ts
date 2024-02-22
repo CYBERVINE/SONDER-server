@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema({
   password: String,
   avatar: String,
   description: String,
-  city: String,
   id: Number
 })
 const promoSchema = new mongoose.Schema({
