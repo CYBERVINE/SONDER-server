@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect("mongodb+srv://cybervine:gny9g4UyeMBNigIm@cluster0.4tzbbxa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-
-// atlas password gny9g4UyeMBNigIm
+mongoose.connect(process.env.MONGO_URL)
 
 const postSchema = new mongoose.Schema({
   comment: String,

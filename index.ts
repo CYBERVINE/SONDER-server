@@ -42,9 +42,8 @@ function getToken(req){
 }
 
 
-app.use('/index', express.static('client/index.html'))
 app.use('/avatars', express.static("public/avatars"))
-app.use('/images', express.static("public/images"))
+app.use('/animations', express.static("public/animations"))
 
 
 
