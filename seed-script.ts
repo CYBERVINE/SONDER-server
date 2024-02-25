@@ -6,8 +6,8 @@ const postSchema = new mongoose.Schema({
   likes: Number,
   lat: Number,
   lng: Number,
-  id: Number,
-  user_id: Number
+  id: String,
+  user_id: String
 })
 const userSchema = new mongoose.Schema({
   username: String,
@@ -15,18 +15,16 @@ const userSchema = new mongoose.Schema({
   password: String,
   avatar: String,
   description: String,
-  id: Number
+  id: String
 })
 const promoSchema = new mongoose.Schema({
-  id: Number,
-  user_id: Number,
+  user_id: String,
   promo: String,
   link: String
 })
 const likesSchema = new mongoose.Schema({
-  id: Number,
   user_id: Number,
-  post_id: Number,
+  post_id: Array,
 })
 
 const Post = mongoose.model("Post", postSchema)
@@ -50,5 +48,3 @@ async function seedDB () {
 seedDB().then(()=>{
   mongoose.connection.close()
 })
-
-
