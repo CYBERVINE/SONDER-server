@@ -100,31 +100,48 @@ const makePost = async (post) => {
   return results
 }
 
+//likes///////////////
+
+const createLiker = async (user) => {
+  await client.connect()
+  const db = client.db(dbName)
+  const likes = db.collection('likes')
+  const results = await likes.insertOne({
+    user_id: user,
+    post_id: []
+  });
+  return results
+}
+
 const checkLikes = async (user) => {
   await client.connect()
   const db = client.db(dbName)
   const likes = db.collection('likes')
-  const results = await likes.find({user_id: user}).toArray();
+  const results = await likes.findOne({user_id: user});
   return results
 }
 
-const updateLikes = async (newLike) => {
+const updateLikes = async (user, post) => {
   await client.connect()
   const db = client.db(dbName)
   const likes = db.collection('likes')
-  const results = await likes.insertOne(newLike).toArray();
+  const results = await likes.updateOne({user_id:user}, {$push:{
+    post_id: post
+  }});
   return results
 }
 
-
-const likePost = async (post, likes) => {
+const likePost = async (post) => {
   await client.connect()
   const db = client.db(dbName)
   const posts = db.collection('posts')
-  const results = await posts.updateOne({post_id:post},{$set:{
-    likes: likes + 1
-  }}).toArray();
-  return results[0]
+  const results = await posts.updateOne({id:post}
+    ,{$inc:{
+    likes: 1
+  }}
+  
+  );
+  return results
 }
 
 
@@ -162,6 +179,7 @@ module.exports = {
     allPosts,
     userPosts,
     makePost,
+    createLiker,
     checkLikes,
     likePost,
     updateLikes,
