@@ -22,18 +22,21 @@ const getUserPosts = async (req,res) => {
 const likePost = async (req,res) => {
   try {
     let alreadyLiked = false
-    const userLikes = await sonder.checkLikes(req.body.user_id)
-      userLikes.forEach(like => {
-        if (like.post_id === req.body.post_id){
-          alreadyLiked = true
-        }
-      })
-
-      if(!alreadyLiked){
+    let user = await sonder.checkLikes(req.body.user_id)
+    
+    if (!user){
+      user = await sonder.createLiker(req.body.user_id)
+    }
+    user.post_id.forEach(like => {
+      if (like === req.body.post_id){
+        alreadyLiked = true
+      }
+    })
+    
+    if(!alreadyLiked){
       const post = await sonder.likePost(req.body.post_id)      
-        await sonder.likePost(req.body.post_id, post.likes)
-        await sonder.updateLikes(req.body)
-      res.status(200).send("post boosted");
+      await sonder.updateLikes(req.body.user_id, req.body.post_id)
+        res.status(200).send("post boosted");
     } else {
       res.send("User already boosted this post.")
     }
