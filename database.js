@@ -1,4 +1,5 @@
 const { MongoClient, ObjectId } = require('mongodb')
+const LOCAL = process.env.LOCAL
 const url = process.env.MONGO_URL
 const client = new MongoClient(url)
 const dbName = process.env.DB_NAME
@@ -38,7 +39,7 @@ const edit = async (id, body, file) => {
   } else {
     const results = await users.updateOne({id:id},{ $set:
       {
-        avatar: `http://127.0.0.1:8080/avatars/${file.filename}`
+        avatar: `${LOCAL}/avatars/${file.filename}`
       }
     });
     return results
