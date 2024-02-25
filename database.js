@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
 const url = process.env.MONGO_URL
 const client = new MongoClient(url)
 const dbName = process.env.DB_NAME
@@ -155,10 +155,12 @@ const userPromos = async (user) => {
 }
   
 const deletePromo = async (promo) => {
+  const id = new ObjectId(promo)
+  console.log(promo)
   await client.connect()
   const db = client.db(dbName)
   const promos = db.collection('promos')
-  const results = await promos.deleteOne({id: promo});
+  const results = await promos.deleteOne({_id: id});
   return results
 }
   
